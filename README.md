@@ -4,6 +4,12 @@ Mobilapp för tidskrivning mot Projektportalen, byggd som en webbapp (`www/`) oc
 
 Desktopversionen finns i [orderportal](https://github.com/oscarjio/orderportal).
 
+## Ladda ner
+
+Färdig apk finns under [Releases](https://github.com/oscarjio/orderportal-mobile/releases/latest). Ladda ner `OrderPortal-x.y.z.apk` på telefonen och tillåt installation från okända källor.
+
+Apk:n byggs automatiskt av GitHub Actions. Ny release skapas när en tagg som `v0.2.0` pushas (`git tag v0.2.0 && git push --tags`).
+
 ## Kom igång
 
 Du behöver Node.js 18+ och Android Studio (med Android SDK).

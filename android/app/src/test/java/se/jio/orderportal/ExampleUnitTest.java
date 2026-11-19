@@ -1,4 +1,4 @@
-package com.getcapacitor.myapp;
+package se.jio.orderportal;
 
 import static org.junit.Assert.*;
 
