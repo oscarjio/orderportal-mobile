@@ -1,0 +1,23 @@
+{
+  "name": "orderportal-mobile",
+  "version": "0.1.0",
+  "description": "Mobilapp för tidskrivning mot Projektportalen (Android via Capacitor)",
+  "main": "www/index.html",
+  "scripts": {
+    "sync": "cap sync android",
+    "open:android": "cap open android",
+    "build:apk": "cd android && ./gradlew assembleDebug",
+    "build:apk-release": "cd android && ./gradlew assembleRelease"
+  },
+  "author": "Oscar Niklasson",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/core": "^6.0.0",
+    "@capacitor/preferences": "^6.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.0.0"
+  }
+}

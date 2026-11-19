@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b3d91" />
+  <title>OrderPortal</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- TOAST -->
+  <div id="toast" style="position:fixed;top:max(12px,env(safe-area-inset-top));left:12px;right:12px;z-index:10000;display:flex;flex-direction:column;gap:6px;pointer-events:none;"></div>
+
+  <!-- LOGIN -->
+  <section class="view" id="viewLogin">
+    <div class="login-card">
+      <h1>OrderPortal</h1>
+      <p class="muted">Logga in med Projektportalen</p>
+      <label>Användarnamn</label>
+      <input type="email" id="loginUser" placeholder="namn@företag.se" autocomplete="username" />
+      <label>Lösenord</label>
+      <input type="password" id="loginPass" autocomplete="current-password" />
+      <button id="btnLogin" class="btn btn-primary">Logga in</button>
+      <div id="loginErr" class="error" hidden></div>
+    </div>
+  </section>
+
+  <!-- APP -->
+  <section class="view" id="viewApp" hidden>
+    <header class="topbar">
+      <div class="topbar-title" id="pageTitle">Tid</div>
+      <button id="btnRefresh" class="icon-btn" title="Uppdatera">↻</button>
+      <button id="btnLogout" class="icon-btn" title="Logga ut">⎋</button>
+    </header>
+
+    <!-- TID-VY -->
+    <div class="tab-view" data-tab="time">
+      <div class="mini-cal" id="miniCal"></div>
+      <div class="day-list" id="dayList"></div>
+      <button class="fab" id="btnAddTime" title="Lägg till tid">＋</button>
+    </div>
+
+    <!-- ORDER-VY -->
+    <div class="tab-view" data-tab="orders" hidden>
+      <div class="search-bar"><input type="text" id="orderSearch" placeholder="Sök order/kund..." /></div>
+      <div class="order-list" id="orderList"></div>
+    </div>
+
+    <!-- ORDER DETALJ -->
+    <div class="tab-view" data-tab="detail" hidden>
+      <div class="detail-head">
+        <button class="icon-btn" id="btnBackDetail">←</button>
+        <div style="flex:1;">
+          <div id="detailTitle" style="font-weight:600;font-size:15px;"></div>
+          <div id="detailSubtitle" class="muted" style="font-size:12px;"></div>
+        </div>
+      </div>
+      <div class="tabs" id="detailTabs">
+        <button class="tab active" data-dtab="time">Tid</button>
+        <button class="tab" data-dtab="material">Material</button>
+      </div>
+      <div class="detail-panel" data-dpanel="time" id="detailTimePanel"></div>
+      <div class="detail-panel" data-dpanel="material" hidden id="detailMaterialPanel"></div>
+      <button class="fab" id="btnDetailAction" title="Lägg till">＋</button>
+    </div>
+
+    <!-- BOTTOM NAV -->
+    <nav class="bottom-nav">
+      <button class="nav-btn active" data-tab="time">
+        <span class="ico">🕐</span><span>Tid</span>
+      </button>
+      <button class="nav-btn" data-tab="orders">
+        <span class="ico">📋</span><span>Ordrar</span>
+      </button>
+    </nav>
+  </section>
+
+  <!-- MODAL: Skriv tid -->
+  <div class="modal" id="modalTime" hidden>
+    <div class="modal-head">
+      <button class="icon-btn" data-close="modalTime">✕</button>
+      <div class="modal-title">Skriv tid</div>
+      <button class="icon-btn text-btn" id="btnSaveTime">Spara</button>
+    </div>
+    <div class="modal-tabs">
+      <button class="mtab active" data-mtab="form">Tidkod</button>
+      <button class="mtab" data-mtab="material">Snabbval</button>
+    </div>
+    <div class="modal-body">
+      <div class="mpanel" data-mpanel="form">
+        <label>Datum</label>
+        <input type="date" id="inpDatum" />
+        <label>Kundorder</label>
+        <div class="autocomplete">
+          <input type="text" id="inpKundorder" placeholder="Ordernr eller sök..." autocomplete="off" />
+          <div class="ac-hint muted" id="hintKundorder"></div>
+          <div class="ac-dropdown" id="ddKundorder" hidden></div>
+        </div>
+        <label>Tidkod</label>
+        <select id="inpTidkod">
+          <option value="010" data-time-type-id="0">Arbetstid</option>
+        </select>
+        <label>Antal timmar</label>
+        <input type="number" id="inpAntal" step="any" min="0" inputmode="decimal" placeholder="8" />
+        <label>Kommentar</label>
+        <input type="text" id="inpText" placeholder="Valfritt" />
+      </div>
+      <div class="mpanel" data-mpanel="material" hidden>
+        <div class="info-card">Kundorder ärvs från Tidkod-fliken: <span id="mvKundorder">—</span></div>
+        <label>Välj artikel (bilzon, beredskap...)</label>
+        <div class="autocomplete">
+          <input type="text" id="inpArticle" placeholder="Sök bilzon / beredskap..." autocomplete="off" />
+          <div class="ac-hint muted" id="hintArticle"></div>
+          <div class="ac-dropdown" id="ddArticle" hidden></div>
+        </div>
+        <label>Antal</label>
+        <input type="number" id="inpMatAntal" value="1" step="any" min="0" inputmode="decimal" />
+        <label>Pris / enhet</label>
+        <input type="number" id="inpMatPris" step="0.01" inputmode="decimal" />
+        <label>Kommentar</label>
+        <input type="text" id="inpMatText" placeholder="Valfritt" />
+      </div>
+    </div>
+  </div>
+
+  <script src="digest-auth.js"></script>
+  <script src="pp-client.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

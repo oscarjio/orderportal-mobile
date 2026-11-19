@@ -1,0 +1,19 @@
+{
+  "appId": "se.jio.orderportal",
+  "appName": "OrderPortal",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https",
+    "allowNavigation": [
+      "api-app3.projektportalen.se",
+      "*.projektportalen.se",
+      "*.blob.core.windows.net"
+    ]
+  },
+  "plugins": {
+    "CapacitorHttp": {
+      "enabled": true
+    }
+  }
+}
