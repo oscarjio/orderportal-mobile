@@ -4,6 +4,14 @@ Mobilapp för tidskrivning mot Projektportalen, byggd som en webbapp (`www/`) oc
 
 Desktopversionen finns i [orderportal](https://github.com/oscarjio/orderportal).
 
+## Skärmbilder
+
+*Bilderna visar testdata, inga riktiga kunder.*
+
+| Inloggning | Tid | Ordrar | Order |
+|:---:|:---:|:---:|:---:|
+| <img src="docs/screenshots/login.png" width="200" alt="Inloggning"> | <img src="docs/screenshots/time.png" width="200" alt="Tidsregistrering"> | <img src="docs/screenshots/orders.png" width="200" alt="Orderlista"> | <img src="docs/screenshots/detail.png" width="200" alt="Orderdetalj"> |
+
 ## Ladda ner
 
 Färdig apk finns under [Releases](https://github.com/oscarjio/orderportal-mobile/releases/latest). Ladda ner `OrderPortal-x.y.z.apk` på telefonen och tillåt installation från okända källor.
